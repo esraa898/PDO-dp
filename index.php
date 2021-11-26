@@ -87,15 +87,14 @@ catch(PDOException $e){
 // fetch multiple 
 
 // user input 
-// $category='clothes';
+ $category='clothes';
 // $name ='nike';
 // $id=2;
     // positional parameter 
-
-// $sql ='SELECT * FROM brand where category = ?';
-// $query= $pdo->prepare($sql);
-// $query->execute([$category]);
-// $brands =$query->fetchAll();
+ $sql ='SELECT * FROM brand where category = ?';
+$query= $pdo->prepare($sql);
+ $query->execute([$category]);
+ print_r($brands =$query->fetchAll());
 
     // named params 
 
