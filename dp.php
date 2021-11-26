@@ -47,7 +47,7 @@ public function where($column ,$compair){
     return $this;
 }
  public function andWhere($column,$compair){
-    $this->sql .= " AND $column $compair :$column";
+    $this->sql .= " AND $column $compair :$column ";
     return $this;
  }
  public function orWhere($column,$compair){
@@ -81,11 +81,11 @@ public function getRow($data){
       $this->prepare();
       $this->excute($data);
              $data= $this->stmt->fetchALL();
-
+       $row= '';
        foreach($data as $row){
            $row;
        }
-return $row;
+    return $row;
 }
 
 
@@ -93,7 +93,7 @@ return $row;
 public function  getAllrow($data){
     $this->prepare();
     $this->excute($data);
-           $data= $this->stmt->fetchALL();
+           $data= $this->stmt->fetchAll();
            return $data;
 }
 
@@ -102,11 +102,15 @@ public function  getAllrow($data){
 public function getRowMultipaleSelection($data){
     $this->prepare();
     $this->excute($data);
-    $data= $this->stmt->fetch();
+  $data= $this->stmt->fetchAll();
+   
+    $row='';
     foreach($data as $row){
         $row;
+       
     }
-return $row;
+    
+     return $row;
 }
 
 // prepare data to get the keys and add : to it 
@@ -163,13 +167,19 @@ if ($count >0){
 
 $conn= New Database ;
 $user=[
- 
-    'name'=>'fresh',
+    //'id'=> 41,
+    'name'=>'sharp',
     'category'=>'elctronic'
   
 ];
+$id= [
+    'id'=> 41,
+    
+];
+
 //$pd= $conn->delete('brand')->where("category","=")->excute($user);
 //$pd= $conn->insert('brand',$user)->excute($user);
 //$pd=$conn->Update('brand',$user)->where('id',"=")->excute($user);
-// print_r($pd= $conn->select('*','brand')->where('category','=')->getAllRow($user));
-// print_r($pd= $conn->select('*','brand')->where('category','=')->getAllRow($user));
+//print_r($pd= $conn->select('*','brand')->where('category','=')->getAllRow($user));
+// print_r($pd= $conn->select('*','brand')->where('id','=')->getRow($id));
+//print_r($pd= $conn->select('*','brand')->where('name','=')->andwhere('category','=')->getRowMultipaleSelection($user));
